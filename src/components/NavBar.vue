@@ -1,12 +1,14 @@
 <template>
-  <b-row class="navbar">
-    <b-col col md="4">
-      <b-btn @click="submitSearch">Search</b-btn>
-    </b-col>
-    <b-col col>
-      <b-input v-model="searchInput"></b-input>
-    </b-col>
-  </b-row>
+  <form @submit.prevent="submitSearch">
+    <b-row class="navbar">
+      <b-col col>
+        <div style="max-width:300px;" class="inner-addon right-addon">
+          <div @click="submitSearch"> <i   class="material-icons">search</i> </div>
+          <b-input placeholder="Search for superhero" v-model="searchInput"></b-input>
+        </div>
+      </b-col>
+    </b-row>
+  </form>
 </template>
 
 <script>
@@ -24,7 +26,6 @@ export default {
   },
   methods: {
     submitSearch() {
-      console.log(this.searchInput);
       let hero = this.searchInput;
       let url = `https://superhero-search.p.rapidapi.com/?hero=${hero}`;
       const headers = {
@@ -32,11 +33,14 @@ export default {
         "x-rapidapi-key": "a334f7c84cmsh347049998c599c2p15bfc1jsnf03181b5e460"
       };
 
-      axios.get(url,{headers: headers}).then(function (response){
-        console.log(response);
-      })
-      
-
+      axios
+        .get(url, { headers: headers })
+        .then(response => response.data)
+        .then(response => {
+          let data = response;
+          console.log(data);
+          this.$emit("search", data);
+        });
     }
   }
 };
@@ -46,5 +50,39 @@ export default {
 <style scoped>
 .navbar {
   background-color: darkred;
+}
+
+.inner-addon {
+  position: relative;
+}
+
+/* style icon */
+.inner-addon .material-icons {
+  position: absolute;
+  padding: 10px;
+}
+
+.material-icons {
+  cursor: pointer;
+}
+
+.material-icons:hover {
+  color:blue;
+}
+
+/* align icon */
+.left-addon .material-icons {
+  left: 0px;
+}
+.right-addon .material-icons {
+  right: 0px;
+}
+
+/* add padding  */
+.left-addon input {
+  padding-left: 30px;
+}
+.right-addon input {
+  padding-right: 30px;
 }
 </style>
