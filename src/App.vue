@@ -256,5 +256,6 @@ i {
     height: 6px; width: 6px;
     border-radius: 3px;
     background: red;
+    pointer-events: none;
   }
 </style>
