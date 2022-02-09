@@ -99,20 +99,41 @@ export default {
         hero = "diana prince";
       }
 
-      let url = `https://superhero-search.p.rapidapi.com/?hero=${hero}`;
-      const headers = {
-        "x-rapidapi-host": "superhero-search.p.rapidapi.com",
-        "x-rapidapi-key": "a334f7c84cmsh347049998c599c2p15bfc1jsnf03181b5e460"
+       const options = {
+        method: "GET",
+        url: "https://superhero-search.p.rapidapi.com/api/",
+        params: { hero: hero },
+        headers: {
+          "x-rapidapi-host": "superhero-search.p.rapidapi.com",
+          "x-rapidapi-key":
+            "1b8487d47emsh565f8396bd255abp10292bjsn48d02715b657",
+        },
       };
 
       axios
-        .get(url, { headers: headers })
-        .then(response => response.data)
-        .then(response => {
-          let data = response;
-          console.log(data);
-          this.$emit("search", data);
+        .request(options)
+        .then(function (response) {
+          console.log(response.data);
+          this.$emit("search", response.data);
+        })
+        .catch(function (error) {
+          console.error(error);
         });
+
+      // let url = `https://superhero-search.p.rapidapi.com/?hero=${hero}`;
+      // const headers = {
+      //   "x-rapidapi-host": "superhero-search.p.rapidapi.com",
+      //   "x-rapidapi-key": "a334f7c84cmsh347049998c599c2p15bfc1jsnf03181b5e460"
+      // };
+
+      // axios
+      //   .get(url, { headers: headers })
+      //   .then(response => response.data)
+      //   .then(response => {
+      //     let data = response;
+      //     console.log(data);
+      //     this.$emit("search", data);
+      //   });
     },
     randomHero() {
       let randomid = Math.floor(Math.random() * 600);
