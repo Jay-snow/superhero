@@ -104,11 +104,12 @@ export default {
         url: "https://superhero-search.p.rapidapi.com/api/",
         params: { hero: hero },
         headers: {
-          "x-rapidapi-host": "superhero-search.p.rapidapi.com",
-          "x-rapidapi-key":
-            "a334f7c84cmsh347049998c599c2p15bfc1jsnf03181b5e460",
+         'X-RapidAPI-Key': 'a334f7c84cmsh347049998c599c2p15bfc1jsnf03181b5e460',
+         'X-RapidAPI-Host': 'superhero-search.p.rapidapi.com'
         },
       };
+      
+      console.log(options);
 
       axios
         .request(options)
