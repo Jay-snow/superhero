@@ -82,6 +82,8 @@ export default {
   },
   methods: {
     submitSearch() {
+      console.log("Search submittedd");
+    
       let hero = this.searchInput;
 
       if (hero.toLowerCase() == "batman") {
