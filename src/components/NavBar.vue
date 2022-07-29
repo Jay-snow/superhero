@@ -140,20 +140,43 @@ export default {
       let randomid = Math.floor(Math.random() * 600);
       this.dataFetching = true;
 
-      let url = `https://superhero-search.p.rapidapi.com/?id=${randomid}`;
-      const headers = {
-        "x-rapidapi-host": "superhero-search.p.rapidapi.com",
-        "x-rapidapi-key": "1b8487d47emsh565f8396bd255abp10292bjsn48d02715b657"
+     // let url = `https://superhero-search.p.rapidapi.com/?id=${randomid}`;
+     // const headers = {
+    //    "x-rapidapi-host": "superhero-search.p.rapidapi.com",
+    //    "x-rapidapi-key": "1b8487d47emsh565f8396bd255abp10292bjsn48d02715b657"
+    //  };
+
+    //  axios
+    //    .get(url, { headers: headers })
+    //    .then(response => response.data)
+    //    .then(response => {
+    //      let data = response;
+    //      console.log(data);
+    //      this.$emit("search", data);
+    //      this.dataFetching = false;
+    //    });
+        
+        
+      const options = {
+        method: "GET",
+        url: "https://superhero-search.p.rapidapi.com/api/?id=${randomid",
+        params: { hero: hero },
+        headers: {
+         'X-RapidAPI-Key': 'a334f7c84cmsh347049998c599c2p15bfc1jsnf03181b5e460',
+         'X-RapidAPI-Host': 'superhero-search.p.rapidapi.com'
+        },
       };
+      
+      console.log(options);
 
       axios
-        .get(url, { headers: headers })
-        .then(response => response.data)
+        .request(options)
         .then(response => {
-          let data = response;
-          console.log(data);
-          this.$emit("search", data);
-          this.dataFetching = false;
+          console.log(response.data);
+          this.$emit("search", response.data);
+        })
+        .catch(error => {
+          console.error(error);
         });
 
         
