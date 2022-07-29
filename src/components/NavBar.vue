@@ -159,8 +159,8 @@ export default {
         
       const options = {
         method: "GET",
-        url: "https://superhero-search.p.rapidapi.com/api/?id=${randomid",
-        params: { hero: hero },
+        url: "https://superhero-search.p.rapidapi.com/api/",
+        params: { id: randomid },
         headers: {
          'X-RapidAPI-Key': 'a334f7c84cmsh347049998c599c2p15bfc1jsnf03181b5e460',
          'X-RapidAPI-Host': 'superhero-search.p.rapidapi.com'
