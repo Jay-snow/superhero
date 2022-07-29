@@ -106,7 +106,7 @@ export default {
         headers: {
           "x-rapidapi-host": "superhero-search.p.rapidapi.com",
           "x-rapidapi-key":
-            "1b8487d47emsh565f8396bd255abp10292bjsn48d02715b657",
+            "a334f7c84cmsh347049998c599c2p15bfc1jsnf03181b5e460",
         },
       };
 
